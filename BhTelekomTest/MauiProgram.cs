@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+
+using BhTelekomTest.Extensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace BhTelekomTest
 {
@@ -17,7 +21,19 @@ namespace BhTelekomTest
 
 #if DEBUG
     		builder.Logging.AddDebug();
+
+            // Load configuration from appsettings.json
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json",
+                             optional: false,
+                             reloadOnChange: true)
+                .Build();
+
+            // Register configuration
+            builder.Configuration.AddConfiguration(configuration);
 #endif
+            builder.Services.AddAppServices(configuration);
+
 
             return builder.Build();
         }

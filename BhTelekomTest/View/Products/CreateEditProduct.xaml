@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BhTelekomTest.View.Products.CreateEditProduct"
+             xmlns:viewmodel="clr-namespace:BhTelekomTest.ViewModel.Products"
+             x:DataType="viewmodel:CreateEditProductViewModel">
+    <StackLayout Padding="10">
+        <Entry Placeholder="Name" Text="{Binding Product.Name, Mode=TwoWay}" />
+        <Entry Placeholder="Description" Text="{Binding Product.Description, Mode=TwoWay}" />
+        <Entry Placeholder="Manufacturer" Text="{Binding Product.ManufacturerName, Mode=TwoWay}" />
+        <Button Text="Save" Command="{Binding CreateEditProductCommand}" />
+    </StackLayout>
+</ContentPage>
